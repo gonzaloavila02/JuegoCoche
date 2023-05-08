@@ -1,4 +1,4 @@
-El juego consistirá en un coche que avanza por una carretera de varios carriles. La finalidad es ir esquivando los obstáculos que van a ir apareciendo por el sentido contrario para obtener la máxima puntuación obtenida.
+El juego consistirá en un coche que avanza por una carretera de varios carriles. La finalidad es ir esquivando los obstáculos que van a ir apareciendo por el sentido contrario para obtener la máxima puntuación posible.
 Cuanto más tiempo aguante el jugador sin chocarse con ningún obstaculo, mayor será la puntuación obtenida al final de la partida.
 
 Habrá un menú principal en el que se describa el juego, los controles y un botón que permita comenzar una nueva partida.
