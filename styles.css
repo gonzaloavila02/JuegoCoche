@@ -43,9 +43,7 @@ body{
     top: -80vh;
     z-index: -9;
 }
-#carretera{
-   
-}
+
 
 #cocheEnemigo{
     display: grid;
@@ -104,11 +102,15 @@ body{
     position: absolute;
     bottom: 0px;
     margin: auto;
-    right: 0%;
-    top: 55%;
+    right: -2.5%;
+    top: 75%;
     left: 0%;
     
     
+}
+
+#cochePortada{
+
 }
 
 .carimg{

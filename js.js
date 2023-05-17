@@ -1,13 +1,21 @@
 //Elementos del html
 var botonStart = document.getElementById("Start")
 var carretera = document.getElementById("imagencarretera")
-var cocheMain = document.getElementById("maincar")
+
 var score = document.getElementById("score")
+
 var cocheEnemigo1 = document.getElementById("cocheEnemigo")
 var cocheEnemigo2 = document.getElementById("cocheEnemigo2")
 var cocheEnemigo3 = document.getElementById("cocheEnemigo3")
 var cocheEnemigo4 = document.getElementById("cocheEnemigo4")
-var n=0;
+var cocheMain = document.getElementById("maincar")
+
+var n=0
+var controlBordes
+var intervalCNaranja
+var intervalCVerde
+var intervalCNegro
+var intervalCBlanco
 
 
 botonStart.addEventListener("click", function(){
@@ -15,26 +23,26 @@ botonStart.addEventListener("click", function(){
     carretera.style.animation = 'roadanimation 10s linear infinite'
     contarScore();
     //Coche negro
-    setInterval(()=>{
+      intervalCNegro = setInterval(()=>{
       num = Math.floor(Math.random()*(51-49+1)+ 49)
       cocheEnemigo1.style.right=`${num}%`
 
     },2000)
 
     //Coche naranja
-    setInterval(()=>{
+      intervalCNaranja = setInterval(()=>{
       num = Math.floor(Math.random()*(40-38+1)+ 38)
       cocheEnemigo2.style.right=`${num}%`
 
     },3000)
     //Coche verde
-    setInterval(()=>{
+      intervalCVerde=setInterval(()=>{
       num = Math.floor(Math.random()*(45-43+1)+ 43)
       cocheEnemigo3.style.right=`${num}%`
 
     },4000)
     //Coche blanco
-    setInterval(()=>{
+      intervalCBlanco =setInterval(()=>{
       num = Math.floor(Math.random()*(57-55+1)+ 55)
       cocheEnemigo4.style.right=`${num}%`
 
@@ -47,7 +55,7 @@ botonStart.addEventListener("click", function(){
     cocheEnemigo4.style.animation = 'enemy4 5s linear infinite'
 
 
-    let t= 45;
+    let t= 65;
     let l = 0;
 
 document.addEventListener("keydown" ,function(press){
@@ -75,11 +83,33 @@ document.addEventListener("keydown" ,function(press){
 })
 //Funcion asincrona para ir aumentando la puntuación de la partida
 async function contarScore(){
-  setTimeout(()=>{
+    controlBordes = setTimeout(()=>{
     score.innerText = `Score: ${n}`
     n=n+1;
+    
+    /*Función que controla el choque del cochemain con los coches enemigos. También controla que el cochemain no salga de la carretera. 
+      También contiene la llamada a la función removeTimeouts, la cual parará todos los setIntervals y el SetTimeout que tenemos cuando choquemos
+      con algún elemento
+    */
+    crashcontrol();
+    
+    //Rellamamos a la función asincrona para que el Score se actualice cada 100 milisegundos añadiendole 1 al marcador
+    contarScore();
 
-    var enemy1_left = Math.abs(document.getElementById("imgcoche1").getBoundingClientRect().left);
+
+  },100)
+}
+
+function removeTimeouts() {
+  clearInterval(intervalCBlanco)
+  clearInterval(intervalCNaranja)
+  clearInterval(intervalCVerde)
+  clearInterval(intervalCNegro)
+  clearTimeout(controlBordes)
+}
+
+function crashcontrol(){
+  var enemy1_left = Math.abs(document.getElementById("imgcoche1").getBoundingClientRect().left);
     var enemy1_right = Math.abs(document.getElementById("imgcoche1").getBoundingClientRect().right);
     var enemy1_top = Math.abs(document.getElementById("imgcoche1").getBoundingClientRect().top);
     var enemy1_bottom = Math.abs(document.getElementById("imgcoche1").getBoundingClientRect().bottom);
@@ -105,33 +135,29 @@ async function contarScore(){
     var cochemain_bottom = Math.abs(document.getElementById("imgmaincar").getBoundingClientRect().bottom);
 
     if(((enemy1_left < cochemain_left && cochemain_left < enemy1_right) || (enemy1_left < cochemain_right && cochemain_right < enemy1_right)) && ((enemy1_top < cochemain_top && cochemain_top< enemy1_bottom) || (enemy1_top < cochemain_bottom && cochemain_bottom < enemy1_bottom)) ){
-      alert("Game over")
+      removeTimeouts()
       location.reload()
     }
 
     if(((enemy2_left < cochemain_left && cochemain_left < enemy2_right) || (enemy2_left < cochemain_right && cochemain_right < enemy2_right)) && ((enemy2_top < cochemain_top && cochemain_top< enemy2_bottom) || (enemy2_top < cochemain_bottom && cochemain_bottom < enemy2_bottom)) ){
-      alert("Game over")
+      removeTimeouts()
       location.reload()
     }
 
     if(((enemy3_left < cochemain_left && cochemain_left < enemy3_right) || (enemy3_left < cochemain_right && cochemain_right < enemy3_right)) && ((enemy3_top < cochemain_top && cochemain_top< enemy3_bottom) || (enemy3_top < cochemain_bottom && cochemain_bottom < enemy3_bottom)) ){
-      alert("Game over")
       location.reload()
+      removeTimeouts()
     }
 
     if(((enemy4_left < cochemain_left && cochemain_left < enemy4_right) || (enemy4_left < cochemain_right && cochemain_right < enemy4_right)) && ((enemy4_top < cochemain_top && cochemain_top< enemy4_bottom) || (enemy4_top < cochemain_bottom && cochemain_bottom < enemy4_bottom)) ){
-      alert("Game over")
+      removeTimeouts()
       location.reload()
     }
 
     if(cochemain_left <770  || cochemain_right >1190 || cochemain_top< 15 || cochemain_bottom> 975){
-      alert("Game over")
+      removeTimeouts()
       location.reload()
     }
-    contarScore();
-
-
-  },100)
 }
 
 
