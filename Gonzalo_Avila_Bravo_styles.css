@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url(img/background.jpg) no-repeat center;
+    image-resolution: initial;
+    background-size: cover;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+#Start{
+    position: absolute;
+    top: 60vh;
+    right: 900px;
+    z-index: 100;
+    font-size: 2rem;
+    background-color: grey;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    padding: 5px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#topScorer {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    font-size: 2rem;
+    padding: 5px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#imagencarretera{
+    background: url(img/road4.png) repeat-y;
+    height: 1200vh;
+    width: 420px;
+    position: absolute;
+    left: 770px;
+    top: -80vh;
+    z-index: -9;
+}
+
+
+#cocheEnemigo{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 50px;
+    right: 51%;
+    
+
+
+}
+
+#cocheEnemigo2{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 5px;
+    right: 38%;
+    
+
+}
+
+#cocheEnemigo3{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 45%;
+    top: 195px;
+   
+    
+
+}
+
+#cocheEnemigo4{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 55%;
+    top: 200px;
+    
+    
+
+}
+
+#maincar{
+    width: 60px;
+    height: 125px;
+    position: absolute;
+    bottom: 0px;
+    margin: auto;
+    right: -2.5%;
+    top: 75%;
+    left: 0%;
+    
+    
+}
+#divToast {
+    width: 300px;
+    height: 130px;
+    position: absolute;
+    left: 43%;
+  }
+
+#cochePortada{
+
+}
+
+.carimg{
+    width: 60px;
+}
+
+@keyframes enemy1 {
+    0%{
+        top: -30vh;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+
+@keyframes enemy2 {
+    0%{
+        top: -50vh;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+
+@keyframes enemy3 {
+    0%{
+        top: -60vh;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+
+@keyframes enemy4 {
+    0%{
+        top: -80vh;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+
+@keyframes roadanimation {
+    0%{
+        top: -800vh;
+    }
+    100%{
+        top: 0vh;
+    }
+}
+
+
+    
+    
+    
